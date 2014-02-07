@@ -27,6 +27,7 @@ local.properties
 *.gz
 *.toc
 *.class
+*.ind
 
 
 # External tool builders
