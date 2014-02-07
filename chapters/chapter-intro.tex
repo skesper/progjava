@@ -1,0 +1,124 @@
+
+\chapter{Einleitung}
+
+"`Programmieren lernt man am besten an einem Projekt"'. Diese Aussage habe ich oft gehört und mittlerweile glaube ich selbst daran. Denn mit der Syntax einer Sprache kann man (fast) nichts anfangen, solange man nicht weiß, \textbf{wie} man etwas programmieren soll. Man könnte es damit vergleichen, dass man vielleicht schnell lernen kann, welche Funktion die Pedale in einem Auto haben und in welche Richtung man das Lenkrad drehen muss, um das Auto in die entsprechende Richtung zu bewegen. Aber ob man deshalb schon gut Autofahren kann, geschweige denn in eine enge Parklücke kommt, bleibt zweifelhaft.  
+
+Programmieren zu lernen ist ein iterativer Prozess. Man kann am Anfang vielleicht nur ein "`Hallo"' in der Kommando-Shell ausgeben und ist vielleicht darüber schon glücklich oder betrübt in dem Sinne, dass dies eine ziemlich komplizierte Möglichkeit ist, "`Hallo"' zu schreiben. Doch damit fängt alles an. Wenn man das kann, kann man vielleicht auch sehr bald dahin kommen, Berechnungen auszuführen. Kann man dies, versucht man sich an einer Benutzerschnittstelle und beherrscht man diese, probiert man aufwändigere Probleme mit einem Programm zu lösen, und so weiter. Der Kreativität sind keine Grenzen gesetzt und je mehr man programmiert, desto leichter fällt einem das Verständnis komplexerer Fachliteratur über das Programmieren. In diesem Sinne ist auch dieses Buch zu verstehen. Es ist vermutlich nur das erste in einer langen Reihe von Büchern, die Sie lesen werden, um schließlich in die Höhen der Programmierung aufzusteigen -- sofern Sie dahin überhaupt möchten. Unabhängig davon, was Sie von diesem Buch erwarten, hoffe ich, dass Sie soviel Spaß beim Lesen haben, wie ich beim Schreiben hatte. 
+
+\section{Worum geht es?}
+
+In diesem Buch werden Sie einen Einblick in die Programmierung mit Java, sowie einen ersten Blick auf das neue GUI\footnote{GUI = Graphical User Interface}\index{GUI} Framework von Java werfen: JavaFX. Und da ich im vorherigen Abschnitt bereits sagte, dass man am einfachsten Programmieren lernt, wenn man eine Aufgabe zu realisieren versucht, werden wir dies an einem Beispiel tun. 
+
+Falls Sie die Begründung für die Wahl des Projektes, an dem Sie Programmieren lernen sollen, nicht interessiert, können Sie den Rest dieses Kapitels überspringen. Der Inhalt ist zum Verständnis der folgenden Kapitel nicht notwendig. 
+
+In den 80er Jahren tauchten Bücher mit wilden, bunten Mustern auf. Im Zuge dessen wurde immer wieder von einem Paradigmenwechsel in der Wissenschaft geredet. Die Chaos-Theorie\index{Chaos-Theorie} war geboren und mit dem Namen Mandelbrot\footnote{\textbf{Benoît B. Mandelbrot}, *20. November 1924 in Warschau; \ding{61}14. Oktober 2010 in Cambridge, Massachusetts}\index{Mandelbrot, Benoît B.} untrennbar verbunden. Gleichzeitig tauchte eine knubbelige Figur in Abbildungen auf und wurde als Mandelbrot-Menge\index{Mandelbrot-Menge} oder Apfelmännchen\index{Apfelmännchen} bezeichnet. Diese Menge steht in einem direkten Zusammenhang mit den sogenannten Julia Mengen\footnote{\textbf{Gaston Maurice Julia}, *3. Februar 1893 in Sidi bel Abbès, Algerien; \ding{61}19. März 1978 in Paris}\index{Julia Menge}. Der historische Hintergrund soll uns nicht weiter interessieren, was uns dabei interessiert ist, dass in den 80er Jahren immer wieder Computer Programme auftauchten, mit denen man diese Mandelbrot-Menge berechnen konnte. 
+
+Das wirklich erstaunliche an dieser Menge ist nicht ihre Form, die für sich genommen schon komplex und erstaunlich genug wäre. Die Entscheidung, ob ein bestimmter Punkt innerhalb oder außerhalb der Mandelbrot-Menge liegt, kann nicht durch eine einfache Berechnung getroffen werden. Man muss einen Punkt als Parameter einer immer wieder auf sich selbst angewendeten Funktion betrachten. Sollten die Zwischenergebnisse dieser "`Selbstanwendung"' irgendwann so groß werden, dass sie divergieren, also über alle Grenzen wachsen, so gehört der Punkt nicht zur Menge. Man kann also die Elemente der Menge nur durch Ausschluss berechnen, indem man alle Punkte einfärbt, die nicht zur Menge gehören. Übrig bleibt ein Schwarzer Fleck, für den man eigentlich nur sagen kann, dass seine Punkte noch nicht divergiert sind. Färbt man nun die Punkte, die nicht zur Menge gehören in der Art ein, dass der Moment, ab dem sie divergent wurden, die Farbe bestimmt, so erhält man fantastische Bilder. Das, was uns interessiert, sind also die Randbereiche der Mandelbrot-Menge. 
+
+\section{Ein klein wenig Mathematik}
+
+Da wir uns mit der Mandelbrot-Menge beschäftigen, kommen wir um ein paar Definitionen nicht herum. 
+
+\begin{definition}
+Wir bezeichnen mit dem Buchstaben $i$ die Wurzel aus $-1$. \index{i}
+\begin{equation}
+i = \sqrt{-1}
+\end{equation}
+\end{definition}
+Als Motivation betrachten wir die Gleichung
+\begin{equation}
+x^2 +1=0
+\end{equation}
+deren Lösung $\pm i$ ist. Diese Erkenntnis war die Inertialzündung zur Entdeckung (oder Definition -- wie man das auch sehen mag) der Komplexen Zahlen.\index{Komplexe Zahl} Man betrachtete weitere Gleichungen, die unter "`normalen"' Bedingungen nicht lösbar waren, jedoch mit Einführung von $i$ sehr wohl.
+
+\begin{definition}
+Die Komplexen Zahlen sind zweidimensionale Zahlen
+\begin{equation}\label{eq:komplex}
+a+i\cdot b
+\end{equation}
+mit $a,b\in \mathbb{R}$. Man nennt $a$ den Realteil, sowie $b$ den Imaginärteil. Den Multiplikationspunkt lässt man für gewöhnlich weg.  Mit $p=a+i\cdot b$ und $q=c+i\cdot d$ ergeben sich die Rechenregeln wie folgt:
+\end{definition}
+
+\begin{equation}\label{eq:cmlxadd}
+p+q = (a+c)+i(b+d)\quad \text{Addition}
+\end{equation}
+
+\begin{equation}\label{eq:cmlxsub}
+p-q = (a-c)+i(b-d) \quad \text{Subtraktion}
+\end{equation}
+
+\begin{equation}\label{eq:cmlxmul}
+p\cdot q = (ac-bd)+i(ad+bc) \quad \text{Multiplikation}
+\end{equation}
+
+\begin{equation}\label{eq:cmlxdiv}
+\frac{p}{q} = \frac{ac+bd}{c^2+d^2} + i\frac{bc-ad}{c^2+d^2}\quad \text{Division}
+\end{equation}
+
+\noindent Nebenbei bemerkt, werden wir die Division nicht brauchen, sie ist nur der Vollständigkeit halber aufgeführt. Als letztes brauchen wir noch den Betrag einer komplexen Zahl:
+\begin{definition}
+Der Betrag einer komplexen Zahl ist eine Abbildung 
+\begin{equation}
+\vert . \vert : \mathbb{C} \longrightarrow \mathbb{R}^+
+\end{equation}
+von den komplexen Zahlen in die positiven reellen Zahlen. Der Betrag einer komplexen Zahl stimmt für komplexe Zahlen ohne Imaginärteil mit dem Absolutbetrag einer reellen Zahl überein.
+\begin{equation}
+\vert z \vert = \sqrt{a^2+b^2}
+\end{equation}
+\end{definition}
+
+Ist man nur an dem Real- oder Imaginärteil einer komplexen Zahl interessiert, so gibt es die Funktionen
+
+\begin{eqnarray}
+\mathfrak{Re}(z) &=& a \\
+\mathfrak{Im}(z) &=& b
+\end{eqnarray}
+für $z=a+i\cdot b$.
+
+\section{Die Iteration}
+\begin{definition}\index{Iteration}
+Wir definieren eine Vorgehensweise, die Iteration über die Funktion $f$ genannt wird, wie folgt: Es sei $z_0$ eine komplexe Zahl. Dann gilt
+\begin{equation}
+z_{k+1} = f(z_k)
+\end{equation}
+für $k\in \mathbb{N}$.
+\end{definition}
+
+Nehmen wir die folgende Funktion:
+\begin{equation*}
+f_c : \mathbb{C} \longrightarrow \mathbb{C}
+\end{equation*}
+\begin{equation}
+f_c(z) = z^2+c
+\end{equation}
+für einen festen Parameter $c$ ist $f_c$ eine komplexe Parabel, die um den Wert $c$ verschoben ist. $f_c$ ist des Weiteren ein Indikator dafür, ob der Parameter $c$ zur Mandelbrot-Menge gehört oder nicht. Dies beschreibt folgende Definition:
+
+\begin{definition}
+Wenn wir über $f_c$ iterieren und $z_k$ endlich bleibt, für alle $k\in \mathbb{N}$, dann ist $c$ Element der Mandelbrot-Menge.\footnote{Vielleicht überrascht Sie diese Definition. Besonders, wenn Sie mathematische Vorkenntnisse mitbringen. Denn die übliche Definition ist diese: Eine komplexe Zahl gehört zur Mandelbrot-Menge, wenn ihre zugehörige Julia-Menge zusammenhängend ist. Dies ist zwar die korrekte Definition, aber sie ist für uns hier nicht besonders aussagekräftig, vor allem deshalb nicht, weil wir sonst den topologischen Begriff "`zusammenhängend"' noch erklären müssten, was das Thema dieses Buches weit überschreiten würde.}
+\end{definition}
+
+Wir können natürlich nicht für jede komplexe Zahl überprüfen, ob sie für alle $k\in \mathbb{N}$ endlich bleibt. Man setzt sich einfach eine maximale Iterationsanzahl $N$, bis zu der geprüft wird, ob die $z_k$ endlich bleiben und akzeptiert $c$ als Element der Menge, falls $z_N$ endlich ist. Es hat sich gezeigt, dass es ausreicht zu prüfen, ob $\vert z_k\vert <2$ bleibt. Ist dem nicht (mehr) so, werden die folgenden Iterationen zwangsläufig divergieren. 
+
+\section{Die Mandelbrot-Mengen-Iteration}
+
+Aus dem vorherigen können wir nun unsere Berechnungsvorschrift ableiten:
+
+\begin{enumerate}
+\item Wähle komplexe Zahlen $c$ beliebig und $z_0=c$, sowie eine maximale Iterationsanzahl von $N\in \mathbb{N}$ und den Iterationsindex $k=0$.
+\item Setze $z_{k+1} = f_c(z_k) = z_k^2 +c$
+\item Ist $\vert z_{k+1} \vert \ge 2$, breche ab, denn $c$ ist kein Element der Mandelbrot-Menge. Bewahre $k$ auf zur Färbung.
+\item Setze $k = k+1$
+\item Ist $k\ge N$, breche ab, denn $c$ ist vermutlich ein Element der Mandelbrot-Menge. 
+\item Gehe zu (2)
+\end{enumerate}
+
+Damit haben wir das theoretische Rüstzeug zur Entwicklung unseres Programms.
+
+\begin{xcb}{Aufgaben}
+Im Folgenden ist immer $c=c_1+ic_2$
+\begin{enumerate}
+\item Sei $z_k = a_k+ib_k$. Berechne $z_{k+1}$ und gib den Real- und Imaginärteil separat an. 
+\item Berechne $f_c\left( f_c(z)\right)$ für ein beliebiges $z = a+ib$.
+\end{enumerate}
+
+\end{xcb}

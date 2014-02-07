@@ -1,0 +1,44 @@
+
+\chapter{Objektorientierte Programmierung}\label{chap:oop}
+
+Ich hatte mich während der Konzeption des Buches zunächst geweigert ein eigenes Kapitel über Objektorientiertheit und/oder objektorientierte Programmierung (OOP) zu schreiben. Ich wollte -- wie in der Einleitung schon beschrieben -- die Konzepte der Programmierung immer anhand des globalen Beispiels erklären, das am Ende der Lektüre dieses Buches heraus kommen soll. 
+
+Für die OOP habe ich mich eines anderen belehren lassen, denn ein Einblick in die Prinzipien der OOP kann vielfach schneller zu einem tieferen Verständnis führen, als dies bei "`inline"' Erklärungen möglich wäre, also Erklärungen, die genau dort auftreten, wo sie benötigt werden. 
+
+\section{Grundprinzipien}
+
+Die OOP besteht aus den folgenden Eigenschaften, vergleiche hierzu den Wikipedia Artikel \cite{wikioop}.
+
+\begin{enumerate}
+\item Abstraktion in Form von Klassen
+\item Datenkapselung
+\item Persistenz
+\item Polymorphie 
+\item Vererbung
+\end{enumerate}
+
+Um diese näher zu verstehen versuchen wir uns anhand eines Beispiels diese Begriffe zu erarbeiten. Betrachten wir ein Studentenwohnheim. Die einzelnen Zimmer dieses Heims wurden nach ein und dem selben Schema gebaut. Es gab also eine Art Schablone dafür, sie sind von der selben "`Klasse"'. Jeder Student bewohnt ein Zimmer dieses Wohnheims und kann es -- im Rahmen der Vorgaben -- für sich selbst einrichten. Das Zimmer selbst ist also seine eigene "`Instanz"' einer abstrakten Zimmerbeschreibung, die durch einen Architekten definiert wurde. 
+
+Dem gegenüber gibt es Gemeinschaftsräume, die von allen benutzt werden. Sie erfüllen eine "`Funktion"', z.B. die Funktion der Säuberung (Waschräume) oder die Funktion der Nahrungsaufnahme (Küche). Diese funktionalen Bereiche gehören zur Klasse des Studentenzimmers, denn ohne Waschraum oder Küche wäre das Zimmer nicht vollständig. 
+
+Der "`Persistenz"' in unserem Beispiel entspricht die Tatsache, dass ein Student in seinem Zimmer sein kann, trotzdem die Küche aktuell nicht benutzt wird. Die Küche kann also nicht als Indikator dafür verwendet werden, um zu entscheiden, ob ein Student sich im Wohnheim aufhält. 
+
+Polymorphie ist ein recht abstraktes Konzept. In der Studentenwohnheim-Metapher gibt es aber funktionale Räume, die polymorph verwendet werden. Zum Beispiel die Toiletten. Jeder Student, unabhängig von seinem oder ihrem Geschlecht, kann sagen "`Ich gehe zur Toilette"'. Männliche und weibliche Studenten meinen dabei aber verschiedene Räume. So hat die Funktion "`Toilette"' zwei Ausprägungen, eine für jedes Geschlecht. Ähnliches gilt für die Küchen, die meist für Stockwerke oder bestimmte Bereiche zur Verfügung stehen. So können zwei verschiedene Studenten, nachdem sie sagten "`Ich gehe in die Küche"', sich in zwei unterschiedlichen Räumen wiederfinden. 
+
+Vererbung hingegen ist wieder ein Konzept zum Zeitpunkt der Planung des Studentenwohnheims. Der Architekt wird vielleicht die Anforderung gehabt haben, verschiedene Arten von Zimmern einzuplanen. So zum Beispiel Zimmer für einzelne Studenten, Zimmer für Pärchen, Zimmer für alleinerziehende Mütter, Zimmer für behinderte Menschen usw. Zunächst wird er die Gemeinsamkeiten der Zimmer definieren: Jedes Zimmer muss eine Tür, ein Fenster und ein Waschbecken haben. Sowie ein Regal, einen Tisch. Aber schon die Betten in jedem Zimmer müssen an die Anforderungen angepasst werden. Sowie ggf. die Tür für Rollstuhlfahrer breiter gemacht werden muss. 
+
+Der Architekt wird also ein prototypisches Zimmer definieren, das als solches nicht gebaut wird, weil es unvollständig ist. Und dann definiert er die eigentlichen Zimmer als Varianten des Prototyps, dabei braucht er sich bei der Definition aber nur um die Unterschiede zum Prototypen zu kümmern. Also das Single-Zimmer ist ein Prototyp-Zimmer erweitert um ein schmales Bett. Das Pärchen-Zimmer ist ein Prototyp-Zimmer mit etwas größerer Grundfläche und einem Zweipersonenbett. Das Zimmer für alleinerziehende Mütter hat ein kleines, separates Zimmer für das Kind, ein Einpersonenbett und eine etwas größere Grundfläche. Und so weiter. 
+
+Das Prototyp-Zimmer ist damit die Basis und die diversen Zimmer die spezialisierten Versionen des Prototyps. Dabei erben die diversen Zimmer die allgemeinen Eigenheiten des Prototyps und fügen Eigenschaften hinzu oder verändern Eigenschaften (dies wird als "`override"' bzw. Überschreiben bezeichnet) des Prototyps. 
+
+\section{Abstraktion}
+
+Nach diesem etwas blumigen Beispiel kommen wir hier zurück auf die Definition der Begriffe: 
+
+Eine Klasse ist die Kombination aus Variablen-Deklaration und Funktionen-Implementierung. Klassen sind Schablonen für ihre Instanzen. Instanzen einer bestimmten Klassen besitzen alle in der Klasse deklarierten Variablen (keine weiteren) und können diesen Werte zuweisen, denn einer Instanz wird Hauptspeicher zugewiesen, in dem die Variablenwerte abgespeichert werden können. Die Implementierung der Funktionen der Klasse teilen sich alle Instanzen.
+
+\section{Datenkapselung}\label{chap:encapsule}
+
+Als Datenkapselung wird die Vorgehensweise begriffen, Daten -- und damit Variablen -- vor direkten Zugriffen zu schützen. Ein "`Verstecken"' von Implementierungsdetails steckt letztlich dahinter. Ob ein Objekt die Werte einer bestimmten Information auch wirklich in einer zugehörigen Variable speichert, oder sich eines grundsätzlich anderen Mechanismus bedient, darf den Benutzer eines Objekts nicht interessieren. Solange der Benutzer einen Getter und Setter für bestimmte Informationen hat und er die Aktionen durchführen kann, wofür er das Objekt verwenden wollte. Dann sollte ihm die Art und Weise egal sein, wie das Objekt letztlich die Durchführung seiner Aktionen  erreicht. Dies ist ein elementarer und sehr zentraler Abstraktionsmechanismus der objektorientierten Programmierung.
+
+Grundvoraussetzung für eine Datenkapselung ist die Kontrolle der Sichtbarkeit von Variablen. Hierfür stehen dem Entwickler von Klassen die Modifikatoren "`public"', "`protected"' und "`private"' zur Verfügung. 

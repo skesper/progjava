@@ -1,0 +1,140 @@
+\documentclass[]{gsm-l}
+
+%\usepackage[a5paper]{geometry}
+
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+
+%\usepackage{cmbright}
+%\usepackage{fouriernc}
+%\usepackage{arev}
+\usepackage{libertine}
+\renewcommand*\familydefault{\sfdefault}
+%\usepackage{tgpagella}
+%\usepackage{tgschola}
+%\usepackage{bera}
+
+\usepackage{amsmath}
+
+\usepackage{pifont} % \ding{61} = Death Symbol, cross
+
+\usepackage[]{fancyvrb}
+
+\usepackage{graphicx}
+
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{xca}[theorem]{Exercise}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\numberwithin{section}{chapter}
+\numberwithin{equation}{chapter}
+
+
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{javared}{rgb}{0.6,0,0} % for strings
+\definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
+\definecolor{javapurple}{rgb}{0.5,0,0.35} % keywords
+\definecolor{javadocblue}{rgb}{0.25,0.35,0.75} % javadoc
+ 
+\lstset{language=Java,
+basicstyle=\ttfamily \footnotesize,
+keywordstyle=\color{javapurple}\bfseries,
+stringstyle=\color{javared},
+commentstyle=\color{javagreen},
+morecomment=[s][\color{javadocblue}]{/**}{*/},
+numbers=none,
+numberstyle=\tiny\color{black},
+stepnumber=1,
+numbersep=10pt,
+tabsize=4,
+showspaces=false,
+showstringspaces=false}
+
+
+
+\makeindex
+
+
+\numberwithin{figure}{chapter}%for figures
+\numberwithin{table}{chapter}%for tables
+
+
+\begin{document}
+
+\frontmatter
+
+\begin{titlepage}
+\vskip 3cm
+\begin{flushleft}
+{\Large Stephan Kesper}\\[1cm]
+{\fontsize{48}{52} \selectfont Java}\\[1cm]
+{\Large Einführung in Java und JavaFX}
+\end{flushleft}
+\vfill
+\texttt{Publisher?}
+\end{titlepage}
+
+
+%    Dedication.  If the dedication is longer than a few lines,
+%    remove the centering instructions and the line break.
+\cleardoublepage
+\thispagestyle{empty}
+\vspace*{13.5pc}
+\begin{center}
+  for Alexa
+\end{center}
+\cleardoublepage
+
+%    Change page number to 7 if a dedication is present.
+\setcounter{page}{5}
+
+\tableofcontents
+\newpage
+
+\listoffigures
+\newpage
+
+\listoftables
+\newpage
+
+
+
+%    Include unnumbered chapters (preface, acknowledgments, etc.) here.
+\include{}
+
+\mainmatter
+%    Include main chapters here.
+\include{chapters/chapter-intro}
+
+\include{chapters/chapter-grundlagen}
+
+\include{chapters/chapter-class}
+
+\include{chapters/chapter-oop}
+
+\appendix
+%    Include appendix "chapters" here.
+\include{}
+
+\backmatter
+%    Bibliographies can be prepared with BibTeX using amsplain,
+%    amsalpha, or (for "historical" overviews) natbib style.
+\bibliographystyle{amsalpha}
+\bibliography{java-literature}
+
+\printindex
+
+\end{document}
+
