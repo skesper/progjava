@@ -1,8 +1,11 @@
-\documentclass[]{gsm-l}
+\documentclass[]{memoir}
 
 %\usepackage[a5paper]{geometry}
 
 \usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[ngerman]{babel}
@@ -10,8 +13,9 @@
 %\usepackage{cmbright}
 %\usepackage{fouriernc}
 %\usepackage{arev}
-\usepackage{libertine}
-\renewcommand*\familydefault{\sfdefault}
+%\usepackage{libertine}
+%\renewcommand*\familydefault{\sfdefault}
+\usepackage{fouriernc}
 %\usepackage{tgpagella}
 %\usepackage{tgschola}
 %\usepackage{bera}
@@ -75,16 +79,21 @@ showstringspaces=false}
 
 \frontmatter
 
-\begin{titlepage}
+% --------------- TITLE PAGE
+\thispagestyle{empty}
+\begin{flushright}
+{\Large Stephan Kesper}
 \vskip 3cm
-\begin{flushleft}
-{\Large Stephan Kesper}\\[1cm]
-{\fontsize{48}{52} \selectfont Java}\\[1cm]
-{\Large Einführung in Java und JavaFX}
-\end{flushleft}
+{\fontsize{48}{52} \selectfont Java}
+\vskip 1cm
+{\Large \textsl{Einführung in Java und JavaFX}}
+\vskip 5cm
+\today
 \vfill
-\texttt{Publisher?}
-\end{titlepage}
+%\includegraphics{../../../License/by-nc-sa.png}
+\end{flushright}
+% --------------- TITLE PAGE
+\newpage
 
 
 %    Dedication.  If the dedication is longer than a few lines,
@@ -98,7 +107,7 @@ showstringspaces=false}
 \cleardoublepage
 
 %    Change page number to 7 if a dedication is present.
-\setcounter{page}{5}
+\setcounter{page}{1}
 
 \tableofcontents
 \newpage
@@ -115,6 +124,10 @@ showstringspaces=false}
 \include{}
 
 \mainmatter
+\pagestyle{plain}
+
+\chapterstyle{veelo}
+
 %    Include main chapters here.
 \include{chapters/chapter-intro}
 

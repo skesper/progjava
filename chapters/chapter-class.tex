@@ -335,7 +335,16 @@ b.add(a);
 \end{lstlisting}
 berechnen und bekämen dasselbe heraus. Das liegt aber an der Kommutativität der Addition, für die Division stimmt das schon nicht mehr.
 
-\begin{xcb}{Aufgaben}
+In der gleichen Art brauchen wir auch noch die Multiplikation, wie in Formel (\ref{eq:mand}) dargestellt, müssen wir eine komplexe Zahl mit sich selbst multiplizieren. Wir könnten eine spezielle Funktion schreiben, die das Quadrat einer komplexen Zahl berechnet. Aber diese könnten wir nur für diese eine Aufgabe verwenden. Wir versuchen immer Funktionen zu schreiben, die die größtmögliche Wiederverwendbarkeit garantieren. Wir realisieren hier die Multiplikation nach Formel (\ref{eq:cmlxmul}). 
+
+\begin{lstlisting}
+  public Complex multiply(Complex b) {
+    return new Complex(real*b.getReal()-imaginary*b.getImaginary(),
+      real*b.getImaginary()+imaginary*b.getReal());
+  }
+\end{lstlisting}
+
+\section{Aufgaben}
 \begin{enumerate}
 \item Was ist eine Instanz?
 \item Woraus besteht eine Klasse?
@@ -346,5 +355,6 @@ berechnen und bekämen dasselbe heraus. Das liegt aber an der Kommutativität de
 \item Welchen Namen hat der Getter für die Variable "`isFinal"' fom Typ "`int"'?
 \item Welchen Namen hat der Getter für die Variable "`isFinal"' fom Typ "`boolean"'?
 \end{enumerate}
-\end{xcb}
+
+
 
