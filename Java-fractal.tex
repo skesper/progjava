@@ -14,8 +14,6 @@
 \usepackage[defaultsans]{droidsans}
 \renewcommand*\familydefault{\sfdefault}
 
-\usepackage{amsmath}
-
 \usepackage{pifont} % \ding{61} = Death Symbol, cross
 
 \usepackage[]{fancyvrb}
@@ -32,9 +30,6 @@
 
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
-
-\numberwithin{section}{chapter}
-\numberwithin{equation}{chapter}
 
 
 
@@ -67,7 +62,11 @@ showstringspaces=false}
 
 \numberwithin{figure}{chapter}%for figures
 \numberwithin{table}{chapter}%for tables
+\numberwithin{section}{chapter}
+\numberwithin{equation}{chapter}
+\numberwithin{subsection}{section}
 
+\setsecnumdepth{subsection}
 
 \begin{document}
 

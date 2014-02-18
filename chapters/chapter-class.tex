@@ -277,6 +277,22 @@ TODO
 \section{Generics}\index{Generics}
 TODO
 
+\section{Klassen-Dateien}
+
+In Java ist es zwar möglich mehrere Klassen in eine Datei zu schreiben, es gilt aber als sehr schlechter Stil und sollte auf jeden Fall vermieden werden!
+
+Generell gelten folgende Regeln: 
+
+\begin{enumerate}
+\item Pro Klasse eine Datei. 
+\item Die Datei muss genauso heißen wie die Klasse.
+\item Paket Deklarationen müssen mit der Verzeichnisstruktur übereinstimmen.
+\end{enumerate}
+
+Wir hatten in Abschnitt \ref{sect:package} gesehen, wie Paket-Definitionen zu einer Strukturierung der Klassen führt. Theoretisch könnten alle Klassen Dateien in dem selben Verzeichnis liegen, praktisch hat dies aber wiederum keinen Sinn. Denn wenn Sie sich die Arbeit machen und Ihre Klassen zu Paketen zuordnen, sollten Sie diese auch gleich in entsprechende Verzeichnisse legen, damit sie voneinander getrennt sind. 
+
+TODO
+
 \section{Unser Projekt}
 
 Für das in der Einleitung beschriebene Projekt brauchen wir (unter vielen anderen Dingen) eine Möglichkeit, mit komplexen Zahlen zu rechnen. Wir könnten natürlich immer mit zwei reellen Zahlen arbeiten, bzw. ihren endlichen Entsprechungen in einem Computer: "`float"' oder "`double"'. 
