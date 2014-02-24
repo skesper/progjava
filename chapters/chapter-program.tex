@@ -1,0 +1,31 @@
+
+\chapter{Programmaufbau}
+
+In diesem Kapitel geht es darum zu verstehen, wie ein Programm in Java aufgebaut sein muss, damit es ablaufen kann. Zunächst müssen wir verstehen, was "`ablaufen"' bedeutet. 
+
+Ein Programm besteht aus einer Anzahl von Anweisungen, die dem Computer sagen, was er zu tun hat. Wenn wir an einer bestimmten Stelle im Programmablauf sind, ist es leicht zu verstehen, wozu der nächste Befehl, z.B.
+\begin{lstlisting}
+System.out.println("Hello World");
+\end{lstlisting}
+führt. Aber wie kommen wir dahin, dass überhaupt etwas "`abläuft"'?
+
+\section{Einstiegspunkt}
+
+Dazu müssen wir uns nochmal etwas genauer mit der Virtual Machine auseinandersetzen. Die Virtual Machine ist selbst ein Programm, die dem Java Programm vorgaukelt, es würde auf einer standardisierten, für Java hergestellten Hardware laufen. Der Start der Virtual Machine wird vom Betriebssystem vorgenommen. Der Anwender sagt dem Betriebssystem, er möchte die Java Virtual Machine starten. Dazu wird vom Betriebssystem vorausgesetzt, dass die Virtual Machine eine sogenannte "`ausführbare Datei"' ist. Eine beliebige Datei wird zu einer "`ausführbaren Datei"', indem sie eine bestimmte innere Struktur aufweist. Das bedeutet, das Betriebssystem schaut an bestimmte Stellen innerhalb der Datei und erwartet, dass diese vom Computer direkt ausführbare Befehle enthalten. Diese ausführbaren Befehle sind die Elemente der Maschinensprache. Mehr brauchen wir darüber nicht zu wissen, als dass das Betriebssystem nur dann Dateien ausführen kann, wenn diese eine bestimmte Struktur haben. 
+
+Bei Java ist dies sehr ähnlich. Nur dass nicht das Betriebssystem die Entscheidung trifft, ob das Java Programm ausführbar ist, oder nicht, sondern die Virtual Machine. In exakt der gleichen Weise, wie das Betriebssystem, sucht die Virtual Machine nach einer internen Struktur in einer .class Datei. Jenen Dateien, die der Java Compiler erzeugt. Wie bekommen wir nun diese besondere Struktur?
+
+Nun, wir sagen dem Compiler einfach, dass er diese erzeugen soll. Und dies wiederum tun wir, indem wir eine Funktion mit einem besonderen Namen erzeugen:
+\begin{lstlisting}
+public static void main(String[] args) {
+}
+\end{lstlisting}
+Dies ist -- nebenbei bemerkt -- auch genau die selbe Vorgehensweise, wie C und C++ Programme ihrem Compiler sagen, dass er eine ausführbare Datei erzeugen soll. In C und C++ heißt diese Funktion auch \texttt{main}, hat aber andere Parameter.
+
+Wie wir sehen, haben wir die \texttt{main}-Funktion als öffentlich deklariert und als statisch. Statisch bedeutet für eine Java Funktion, dass sie zur Klasse gehört und nicht zu einer Instanz. Das bedeutet, wir können diese Funktion aufrufen, ohne eine Instanz zu haben. Das ist auch notwendig, denn zum Zeitpunkt des Programmstarts haben wir noch keine Objekte erzeugen können.
+
+Über den Begriff \texttt{void} geben wir dem Compiler zu verstehen, dass diese Funktion keinen Rückgabewert liefern wird. Und schließlich sagt \texttt{String[] args}, dass ein Array (also ein Art Liste) von Objekten vom Typ String als Parameter geliefert wird. Dies sind die Parameter, die dem Java Programm bei der Ausführung mit übergeben wurden -- die Virtual Machine sorgt hierfür.
+
+Jedes Java Programm hat gezwungenermaßen eine \texttt{main}-Funktion. Ohne diese wird kein Java Programm ablaufen. 
+
+Die \texttt{main}-Funktion wird auch als \emph{Einstiegspunkt} bezeichnet. 
